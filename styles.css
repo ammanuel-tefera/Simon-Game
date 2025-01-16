@@ -38,7 +38,7 @@ body {
   display: flex;
   justify-content: center;
   width: 100%; /* Full width */
-   /* Allow rows to grow and fill space */
+  flex: 1;/* Allow rows to grow and fill space */
 }
 .second {
   margin-top: 0%;
