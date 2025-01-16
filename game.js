@@ -13,14 +13,21 @@ $(".btn").on("click",function(){
     // Call checkAnswer with the index of the last answer
     checkAnswer(userClickedPattern.length - 1);
 });
-$(document).on("touchstart", function() {
-    if (!gameStarted) {
-        level = 0; // Reset level
-        $("#level-title").text("Level " + level); // Update the title
-        nextSequence(); // Start the game
-        gameStarted = true; // Set the game started flag to true
+$(document).on("touchstart keydown", function(event) {
+    // Check if the game is not started or is over
+    if (!gameStarted || level === 0) {
+        startGame(); // Start the game
     }
 });
+
+function startGame() {
+    level = 0; // Reset level
+    gamePattern = []; // Reset game pattern
+    userClickedPattern = []; // Reset user clicked pattern
+    $("#level-title").text("Level " + level); // Update the title
+    nextSequence(); // Start the game
+    gameStarted = true; // Set the game started flag to true
+}
 
 function nextSequence(){
     userClickedPattern = [];
